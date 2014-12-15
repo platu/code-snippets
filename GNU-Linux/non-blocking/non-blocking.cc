@@ -47,7 +47,7 @@ int keypressed() {
         term.c_lflag &= ~ICANON;
         tcsetattr(STDIN, TCSANOW, &term);
         setbuf(stdin, NULL);
-
+		// Synchronisation entre flux standard et iostream
         cin.sync_with_stdio();
 
         initialized = true;
@@ -125,7 +125,7 @@ int main() {
 
     // Sortie
     gotoxy(5,25);
-	cout << "Did it with [" << c << "] !" << endl;
+	cout << "Fin du programme avec le caractère [" << c << "] !" << endl;
 
 	return 0;
 }
