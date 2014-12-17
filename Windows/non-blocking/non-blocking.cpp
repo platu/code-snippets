@@ -81,7 +81,6 @@ int main()
             break;
         }
         drawline(length);
-        clreol();
 		// Détection appui touche
         if (_kbhit()) {
 			// Lecture d'un caractère au clavier
