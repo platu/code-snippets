@@ -47,6 +47,7 @@ void drawline(int l)
 
 	for (i = 0; i < l; i++)
 		cout << ' ';
+	cout << setbk(BLACK);
 	clreol();
 }
 
@@ -61,12 +62,11 @@ int main()
 	srand(time(NULL));
 	clrscr();
 	menu();
-	// Tâche de fond
+	// TÃ¢che de fond
 	do {
 		length = rand() % 50;
 		usleep(1000);
 		gotoxy(5,20);
-		clreol();
 		switch(c) {
 		case 'R':
 			cout << setbk(RED);
@@ -82,9 +82,9 @@ int main()
 			break;
 		}
 		drawline(length);
-		// Détection appui touche
+		// DÃ©tection appui touche
 		if (_kbhit()) {
-			// Lecture d'un caractère au clavier
+			// Lecture d'un caractÃ¨re au clavier
 			c = toupper(_getch());
 			clearkeybuf();
 		}
@@ -92,7 +92,8 @@ int main()
 	// Sortie
 	gotoxy(5,25);
 	clreol();
-	cout << "Fin du programme avec le caractère [" << c << "] !" << endl;
+	cout << setbk(BLACK) << setclr(LIGHTGRAY)
+	     << "Fin du programme avec le caractÃ¨re [" << c << "] !" << endl;
 
 	return 0;
 }
