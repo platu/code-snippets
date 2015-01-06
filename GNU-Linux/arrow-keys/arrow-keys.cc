@@ -22,12 +22,6 @@ void cleareol() {
 	cout << "\x1b[K" << flush;
 }
 
-void clearattr() {
-
-	// Efface les attributs de couleurs
-	cout << "\x1b[0m" << flush;
-}
-
 void gotoxy(int x, int y) {
 
 	// Place le curseur à la position x sur la ligne y
@@ -57,71 +51,55 @@ int keypressed() {
 	return bytesWaiting;
 }
 
-void menu() {
-
-	gotoxy(5,10);
-	cout << "\x1b[1mChoix de la couleur ou sortie du programme\x1b[0m" << endl;
-	gotoxy(5,12);
-	cout << "\x1b[31m[R]ouge\x1b[0m" << endl;
-	gotoxy(5,13);
-	cout << "\x1b[32m[V]ert\x1b[0m" << endl;
-	gotoxy(5,14);
-	cout << "\x1b[34m[B]leu\x1b[0m" << endl;
-	gotoxy(5,16);
-	cout << "[Q]uitter" << endl;
-}
-
-void drawline(int l) {
-
-	int i;
-
-	for (i = 0; i < l; i++)
-		cout << ' ';
-}
-
 int main() {
 
 	char c;
-	int length;
 
 	// Initialisation
-	srand(time(NULL));
 	clear();
-	menu();
+	gotoxy(5,10);
+	cout << "Programme de détection d'appui sur les touches flèches" << endl;
 
 	// Tâche de fond
 	do {
-		length = rand() % 50;
 
 		usleep(1000);
 		gotoxy(5,20);
-		cleareol();
-
-		switch(c) {
-			case 'R':
-				cout << "\x1b[41m";
-				break;
-			case 'V': 
-				cout << "\x1b[42m";
-				break;
-			case 'B': 
-				cout << "\x1b[44m";
-				break;
-			default: 
-				cout << "\x1b[107m";
-				break;
-		}
-		drawline(length);
-		clearattr();
+		cout << '.';
 
 		// Détection appui touche
 		if (keypressed()) {
 			// Lecture d'un caractère au clavier
-			c = toupper(getchar());
+			c = getchar();
+			if (c == '\x1b') {
+				//cout << '\\';
+				c = getchar();
+				//cout << c;
+				c = getchar();
+				//cout << c;
+				switch(c) {
+					case 'A':
+						cout << "haut";
+						break;
+					case 'B': 
+						cout << "bas";
+						break;
+					case 'C': 
+						cout << "droite";
+						break;
+					case 'D': 
+						cout << "gauche";
+						break;
+					default: 
+						cout << c;
+						break;
+				}
+			}
 			fflush(stdin);
+			cleareol();
 		}
 
-	} while (c != 'Q');
+	} while (toupper(c) != 'Q');
 
 	// Sortie
 	gotoxy(5,25);
