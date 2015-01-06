@@ -31,19 +31,18 @@ int main()
 	// Initialisation
 	clrscr();
 	gotoxy(5,10);
-	cout << "Programme de détection d'appui sur les touches flèches" << endl;
+	cout << "Programme de dÃ©tection d'appui sur les touches flÃ¨ches" << endl;
 
-	// Tâche de fond
+	// TÃ¢che de fond
 	do {
 		usleep(1000);
 		gotoxy(5,20);
 		cout << '.';
 
-		// Détection appui touche
+		// DÃ©tection appui touche
 		if (_kbhit()) {
-			// Lecture d'un caractère au clavier
+			// Lecture d'un caractÃ¨re au clavier
 			c = _getch();
-			//cout << hex << int(c);
 			if (c == '\xe0') {
 				//cout << '\\';
 				c = _getch();
@@ -73,7 +72,7 @@ int main()
 	gotoxy(5,25);
 	clreol();
 	cout << setbk(BLACK) << setclr(LIGHTGRAY)
-	     << "Fin du programme avec le caractère [" << c << "] !" << endl;
+	     << "Fin du programme avec le caractÃ¨re [" << c << "] !" << endl;
 
 	return 0;
 }
