@@ -22,6 +22,7 @@ int main() {
 			fichierEnLecture.getline(ligne, MAXCHAR);
 			cout << ligne << endl;
 		} while (! fichierEnLecture.eof());
+		fichierEnLecture.close();
 	}
 	else
 		cerr << "Ouverture du fichier " << ligne << " impossible" << endl;
