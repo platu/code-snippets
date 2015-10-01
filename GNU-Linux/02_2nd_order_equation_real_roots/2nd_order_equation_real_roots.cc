@@ -26,7 +26,7 @@ int main() {
 		else if (delta == 0)
 			cout << "One real double root: " << -b/(2*a) << endl;
 		else
-			cout << "The equation has 2 real roots" << endl
+			cout << "The equation has 2 real roots: " << endl
 			     << -b + sqrt(delta)/(2*a)
 				 << " and " 
 			     << -b - sqrt(delta)/(2*a) << endl;
