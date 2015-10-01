@@ -23,6 +23,8 @@ int main() {
 		delta = b*b - 4*a*c;
 		if (delta < 0)
 			cout << "No real roots" << endl;
+		else if (delta == 0)
+			cout << "One real double root: " << -b/(2*a) << endl;
 		else
 			cout << "The equation has 2 real roots" << endl
 			     << -b + sqrt(delta)/(2*a)
