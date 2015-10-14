@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 
-	int n, count, prime_count = 0, number = 1;
+	int n, count, prime_count = 0, number = 2;
 	bool is_a_prime = true;
 
 	cout << "Enter the number of prime numbers to display: ";

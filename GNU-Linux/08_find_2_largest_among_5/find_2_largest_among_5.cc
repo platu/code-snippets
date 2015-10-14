@@ -4,29 +4,35 @@
  */
 #include <iostream>
 #include <cstdlib>
+#include <climits>
 
 using namespace std;
 
 void find2largest(int r, int s, int t, int u, int v, int &second_largest, int &largest) {
 
 	largest = r;
-
-	if(s > largest) {
-		second_largest = largest;
+	
+	if(s > largest)
 		largest = s;
-	}
-	if(t > largest) {
-		second_largest = largest;
+	if(t > largest)
 		largest = t;
-	}
-	if(u > largest) {
-		second_largest = largest;
+	if(u > largest)
 		largest = u;
-	}
-	if(v > largest) {
-		second_largest = largest;
+	if(v > largest)
 		largest = v;
-	}
+	
+	second_largest = INT_MIN;
+
+	if(r > second_largest && r < largest)
+		second_largest = r;
+	if(s > second_largest && s < largest)
+		second_largest = s;
+	if(t > second_largest && t < largest)
+		second_largest = t;
+	if(u > second_largest && u < largest)
+		second_largest = u;
+	if(v > second_largest && v < largest)
+		second_largest = v;
 }
 
 int main() {
