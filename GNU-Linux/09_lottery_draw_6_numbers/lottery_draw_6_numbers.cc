@@ -28,20 +28,19 @@ bool alreadythere(t_lottery d, int v, int c) {
 
 int main() {
 
-	int count = 0, val;
+	int count, val;
 	t_lottery draw;
 
 	srand(time(NULL));
 
-	do {
+	for(count = 0; count < NBNUM; count++) {
 		do {
 			val = rand() % 50;
 			if (alreadythere(draw, val, count))
 				cout << "New round: " << val << " is already there!" << endl;
 		} while(alreadythere(draw, val, count));
 		draw[count] = val;
-		count++;
-	} while (count < NBNUM);
+	}
 
 	for(count = 0; count < NBNUM; count++)
 		cout << draw[count] << " : ";
