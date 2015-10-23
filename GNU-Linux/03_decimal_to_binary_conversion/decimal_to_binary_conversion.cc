@@ -13,8 +13,9 @@ int main() {
 	cout << "Enter the decimal number you want to be displayed in binary: ";
 	cin >> number;
 
-	size = (sizeof number) * 8;
-	cout << "This number size is " << size << "bits" << endl;
+	size = sizeof number * 8;
+	cout << "This number is stored in a variable which type size is "
+	     << size << "bits" << endl;
     
 	cout << "Its binary value is: ";
 	for(i = size - 1; i >= 0; i--) {
