@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
 
-	int number, ncount = 0;
+	int number, ncount = 1;
 
 	srand(time(NULL));
 
@@ -29,7 +29,6 @@ int main() {
 	} while (number != 1);
 
 	cout << number << endl;
-	ncount++;
 	cout << "This sequence has " << ncount << " numbers." << endl;  
 
 	return EXIT_SUCCESS;
