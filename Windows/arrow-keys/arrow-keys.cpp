@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <windows.h>
-#include "../conio21/constream"
+#include <constream>
 
 using namespace std;
 using namespace conio;
@@ -30,14 +30,13 @@ int main()
 
 	// Initialisation
 	clrscr();
-	gotoxy(5,10);
-	cout << "Programme de détection d'appui sur les touches flèches" << endl;
+	cout << setxy(5,10) << "Programme de détection d'appui sur les touches flèches" << endl;
 
 	// Tâche de fond
 	do {
+		// Base de temps
 		usleep(1000);
-		gotoxy(5,20);
-		cout << '.';
+		cout << setxy(5,20) << '.';
 
 		// Détection appui touche
 		if (_kbhit()) {
@@ -68,11 +67,10 @@ int main()
 			clearkeybuf();
 		}
 	} while (toupper(c) != 'Q');
-	// Sortie
-	gotoxy(5,25);
-	clreol();
-	cout << setbk(BLACK) << setclr(LIGHTGRAY)
+	// Sortie du programme
+	cout << setxy(5,25) << setbk(BLACK) << setclr(LIGHTGRAY)
 	     << "Fin du programme avec le caractère [" << c << "] !" << endl;
+	clreol();
 
 	return 0;
 }
