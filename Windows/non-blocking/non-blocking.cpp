@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <windows.h>
-#include "conio21/constream"
+#include <constream>
 
 using namespace std;
 using namespace conio;
@@ -24,20 +24,15 @@ void usleep(__int64 usec)
 
 void menu()
 {
-	gotoxy(5,10);
-	cout << setclr(LIGHTGRAY) << "Choix de la couleur ou sortie du programme" << endl;
+	cout << setxy(5,10) << setclr(LIGHTGRAY) << "Choix de la couleur ou sortie du programme" << endl;
 	clreol();
-	gotoxy(5,12);
-	cout << setclr(RED) << "[R]ouge" << endl;
+	cout << setxy(5,12) << setclr(RED) << "[R]ouge" << endl;
 	clreol();
-	gotoxy(5,13);
-	cout << setclr(GREEN) << "[V]ert" << endl;
+	cout << setxy(5,13) << setclr(GREEN) << "[V]ert" << endl;
 	clreol();
-	gotoxy(5,14);
-	cout << setclr(BLUE) << "[B]leu" << endl;
+	cout << setxy(5,14) << setclr(BLUE) << "[B]leu" << endl;
 	clreol();
-	gotoxy(5,16);
-	cout << setclr(WHITE) << "[Q]uitter" << endl;
+	cout << setxy(5,16) << setclr(WHITE) << "[Q]uitter" << endl;
 	clreol();
 }
 
@@ -45,6 +40,7 @@ void drawline(int l)
 {
 	int i;
 
+	cout << setxy(5,20);
 	for (i = 0; i < l; i++)
 		cout << ' ';
 	cout << setbk(BLACK);
@@ -64,36 +60,35 @@ int main()
 	menu();
 	// Tâche de fond
 	do {
-		length = rand() % 50;
-		usleep(1000);
-		gotoxy(5,20);
-		switch(c) {
-		case 'R':
-			cout << setbk(RED);
-			break;
-		case 'V':
-			cout << setbk(GREEN);
-			break;
-		case 'B':
-			cout << setbk(BLUE);
-			break;
-		default:
-			cout << setbk(WHITE);
-			break;
-		}
-		drawline(length);
+		// Base de temps
+		usleep(1000);	
 		// Détection appui touche
 		if (_kbhit()) {
 			// Lecture d'un caractère au clavier
 			c = toupper(_getch());
 			clearkeybuf();
+			switch(c) {
+				case 'R':
+					cout << setbk(RED);
+					break;
+				case 'V':
+					cout << setbk(GREEN);
+					break;
+				case 'B':
+					cout << setbk(BLUE);
+					break;
+				default:
+					cout << setbk(WHITE);
+			}
 		}
+		// Dessin d'une ligne de longueur aléatoire
+		length = rand() % 50;
+		drawline(length);
 	} while (c != 'Q');
-	// Sortie
-	gotoxy(5,25);
-	clreol();
-	cout << setbk(BLACK) << setclr(LIGHTGRAY)
+	// Sortie du programme
+	cout << setxy(5,25) << setbk(BLACK) << setclr(LIGHTGRAY)
 	     << "Fin du programme avec le caractère [" << c << "] !" << endl;
+	clreol();
 
 	return 0;
 }
