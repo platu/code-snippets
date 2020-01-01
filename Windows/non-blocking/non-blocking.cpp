@@ -67,19 +67,19 @@ int main()
 			// Lecture d'un caractère au clavier
 			c = toupper(_getch());
 			clearkeybuf();
-			switch(c) {
-				case 'R':
-					cout << setbk(RED);
-					break;
-				case 'V':
-					cout << setbk(GREEN);
-					break;
-				case 'B':
-					cout << setbk(BLUE);
-					break;
-				default:
-					cout << setbk(WHITE);
-			}
+		}
+		switch(c) {
+			case 'R':
+				cout << setbk(RED);
+				break;
+			case 'V':
+				cout << setbk(GREEN);
+				break;
+			case 'B':
+				cout << setbk(BLUE);
+				break;
+			default:
+				cout << setbk(WHITE);
 		}
 		// Dessin d'une ligne de longueur aléatoire
 		length = rand() % 50;
