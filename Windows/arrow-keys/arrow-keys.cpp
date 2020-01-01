@@ -43,7 +43,6 @@ int main()
 			// Lecture d'un caractère au clavier
 			c = _getch();
 			if (c == '\xe0') {
-				//cout << '\\';
 				c = _getch();
 				switch(c) {
 					case 'H':
