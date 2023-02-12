@@ -44,7 +44,7 @@ int keypressed() {
 	if (! initialized) {
 		// Désactivation du tampon mémoire sur le flux standard
 		tcgetattr(STDIN, &term);
-		term.c_lflag &= ~ICANON;
+		term.c_lflag &= (tcflag_t)~ICANON;
 		tcsetattr(STDIN, TCSANOW, &term);
 		setbuf(stdin, NULL);
 		// Synchronisation entre flux standard et iostream
